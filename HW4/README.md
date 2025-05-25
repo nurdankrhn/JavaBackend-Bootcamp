@@ -18,8 +18,8 @@ This project demonstrates basic file operations, exception handling, and object-
 
 ## 📁 File Structure
 
-LibraryBookTrackingSystem/
-│
+LibraryBookTrackingSystem/<br>
+│<br>
 ├── Book.java // Represents a book with title, author, stock<br>
 ├── FileHandler.java // Handles reading/writing to books.txt and log.txt<br>
 ├── InvalidStockException.java // Custom exception for invalid stock updates<br>
@@ -27,3 +27,6 @@ LibraryBookTrackingSystem/
 ├── books.txt // Book data file (auto-created if missing)<br>
 ├── log.txt // Log file for actions and errors (auto-created)<br>
 └── README.md // This documentation file<br>
+
+![image](https://github.com/user-attachments/assets/780354cf-47e1-478c-9821-c0a94d7c3e81)
+
