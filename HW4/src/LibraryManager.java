@@ -102,6 +102,7 @@ public class LibraryManager {
                 FileHandler.saveBooks(books);
                 FileHandler.log("Updated stock for: " + title);
                 System.out.println("Stock updated successfully.");
+                displayBooks();  // Show updated list
                 return;
             }
         }
