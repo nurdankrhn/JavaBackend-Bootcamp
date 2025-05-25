@@ -90,47 +90,79 @@ public class LibraryManager {
     }
 
 
-    // Removes a book by title
+    // Removes a book from the library
     private static void removeBook(Scanner scanner) throws IOException {
         System.out.print("Enter book title to remove: ");
-        String title = scanner.nextLine();
+        String inputTitle = scanner.nextLine().trim();
 
-        books.removeIf(book -> book.getTitle().equalsIgnoreCase(title));
-        FileHandler.saveBooks(books);
-        FileHandler.log("Removed book: " + title);
-        System.out.println("Book removed if it existed.");
+        System.out.print("Enter author name: ");
+        String inputAuthor = scanner.nextLine().trim();
 
-        displayBooks();  // Show updated list
-    }
+        boolean removed = false;
 
-    // Updates the stock of a book
-    private static void updateStock(Scanner scanner) throws IOException, InvalidStockException {
-        System.out.print("Enter book title to update: ");
-        String title = scanner.nextLine();
+        for (int i = 0; i < books.size(); i++) {
+            Book book = books.get(i);
+            if (book.getTitle().trim().equalsIgnoreCase(inputTitle) &&
+                    book.getAuthor().trim().equalsIgnoreCase(inputAuthor)) {
 
-        for (Book book : books) {
-            if (book.getTitle().equalsIgnoreCase(title)) {
-                System.out.print("Enter new stock: ");
-                int newStock = scanner.nextInt();
-                scanner.nextLine();
-
-                if (newStock < 0) {
-                    throw new InvalidStockException("Stock cannot be negative.");
-                }
-
-                book.setStock(newStock);
+                books.remove(i);
                 FileHandler.saveBooks(books);
-                FileHandler.log("Updated stock for: " + title);
-                System.out.println("Stock updated successfully.");
-                displayBooks();  // Show updated list
-                return;
+                FileHandler.log("Removed book: " + inputTitle);
+                System.out.println("Book removed successfully.");
+                removed = true;
+                break;
             }
         }
 
-        System.out.println("Book not found.");
+        if (!removed) {
+            System.out.println("Book not found. Please check the title and author.");
+            FileHandler.log("Attempted to remove non-existent book: " + inputTitle);
+        }
 
-        displayBooks();  // Show updated list
+        displayBooks(); // Show updated list
     }
+
+
+
+    // Updates the stock of an existing book
+    private static void updateStock(Scanner scanner) throws IOException, InvalidStockException {
+        System.out.print("Enter book title to update: ");
+        String inputTitle = scanner.nextLine().trim();
+
+        System.out.print("Enter author name: ");
+        String inputAuthor = scanner.nextLine().trim();
+
+        System.out.print("Enter new stock count: ");
+        int newStock = scanner.nextInt();
+        scanner.nextLine(); // consume newline
+
+        if (newStock < 0) {
+            throw new InvalidStockException("Stock cannot be negative.");
+        }
+
+        boolean found = false;
+
+        for (Book book : books) {
+            if (book.getTitle().trim().equalsIgnoreCase(inputTitle) &&
+                    book.getAuthor().trim().equalsIgnoreCase(inputAuthor)) {
+
+                book.setStock(newStock);
+                FileHandler.saveBooks(books);
+                FileHandler.log("Updated stock for: " + inputTitle + " to " + newStock);
+                System.out.println("Stock updated successfully.");
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Book not found. Please check the title and author.");
+            FileHandler.log("Attempted to update stock for non-existent book: " + inputTitle);
+        }
+
+        displayBooks(); // Show updated list
+    }
+
 
     // Displays all books in the current list
     private static void displayBooks() {
