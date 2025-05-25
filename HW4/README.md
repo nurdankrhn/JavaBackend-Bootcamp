@@ -20,10 +20,10 @@ This project demonstrates basic file operations, exception handling, and object-
 
 LibraryBookTrackingSystem/
 │
-├── Book.java // Represents a book with title, author, stock
-├── FileHandler.java // Handles reading/writing to books.txt and log.txt
-├── InvalidStockException.java // Custom exception for invalid stock updates
-├── LibraryManager.java // Main class, includes the menu and program logic
-├── books.txt // Book data file (auto-created if missing)
-├── log.txt // Log file for actions and errors (auto-created)
-└── README.md // This documentation file
+├── Book.java // Represents a book with title, author, stock<br>
+├── FileHandler.java // Handles reading/writing to books.txt and log.txt<br>
+├── InvalidStockException.java // Custom exception for invalid stock updates<br>
+├── LibraryManager.java // Main class, includes the menu and program logic<br>
+├── books.txt // Book data file (auto-created if missing)<br>
+├── log.txt // Log file for actions and errors (auto-created)<br>
+└── README.md // This documentation file<br>
