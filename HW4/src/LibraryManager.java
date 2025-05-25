@@ -50,25 +50,45 @@ public class LibraryManager {
         }
     }
 
-    // Adds a new book to the list
+    // Adds a new book to the library or updates stock if it already exists
     private static void addBook(Scanner scanner) throws IOException {
         System.out.print("Enter book title: ");
-        String title = scanner.nextLine();
+        String inputTitle = scanner.nextLine().trim();
 
         System.out.print("Enter author name: ");
-        String author = scanner.nextLine();
+        String inputAuthor = scanner.nextLine().trim();
 
         System.out.print("Enter stock count: ");
         int stock = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); // consume newline
 
-        books.add(new Book(title, author, stock));
-        FileHandler.saveBooks(books);
-        FileHandler.log("Added book: " + title);
-        System.out.println("Book added successfully.");
+        boolean bookExists = false;
 
-        displayBooks();  // Show updated list
+        for (Book book : books) {
+            if (book.getTitle().trim().equalsIgnoreCase(inputTitle) &&
+                    book.getAuthor().trim().equalsIgnoreCase(inputAuthor)) {
+
+                // Book already exists, update stock
+                book.setStock(book.getStock() + stock);
+                FileHandler.saveBooks(books);
+                FileHandler.log("Updated stock for existing book: " + inputTitle);
+                System.out.println("Book already exists. Stock updated.");
+                bookExists = true;
+                break;
+            }
+        }
+
+        if (!bookExists) {
+            // New book entry
+            books.add(new Book(inputTitle, inputAuthor, stock));
+            FileHandler.saveBooks(books);
+            FileHandler.log("Added new book: " + inputTitle);
+            System.out.println("New book added successfully.");
+        }
+
+        displayBooks(); // Show updated list
     }
+
 
     // Removes a book by title
     private static void removeBook(Scanner scanner) throws IOException {
