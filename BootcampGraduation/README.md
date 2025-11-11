@@ -64,13 +64,13 @@ This project is a **Java & Spring Boot** based financial management system that 
 
 **Tables:**
 - **Users** (id, name, password)
-- <img width="392" height="210" alt="image" src="https://github.com/user-attachments/assets/d4af5aaa-16e4-4415-9fb8-503d71db1e8e" />
+ <img width="392" height="210" alt="image" src="https://github.com/user-attachments/assets/d4af5aaa-16e4-4415-9fb8-503d71db1e8e" />
 
 - **Transactions** (amount, date, description, type, category_id, user_id)
-- <img width="765" height="271" alt="image" src="https://github.com/user-attachments/assets/c2cde8b3-fea3-4733-928b-ed8a4b6c2961" />
+ <img width="765" height="271" alt="image" src="https://github.com/user-attachments/assets/c2cde8b3-fea3-4733-928b-ed8a4b6c2961" />
   
 - **Categories** (id, name)
-- <img width="366" height="220" alt="image" src="https://github.com/user-attachments/assets/40dedd14-eee9-49ea-80e7-e6bbefabd4bf" />
+ <img width="366" height="220" alt="image" src="https://github.com/user-attachments/assets/40dedd14-eee9-49ea-80e7-e6bbefabd4bf" />
 
 
 ---
