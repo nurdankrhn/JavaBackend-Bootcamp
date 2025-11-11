@@ -50,10 +50,12 @@ This project is a **Java & Spring Boot** based financial management system that 
 
 | Operation | Endpoint | Method | JSON Request Body | JSON Response Body |
 |------------|-----------|--------|-------------------|--------------------|
-| Add User | `http://localhost:8080/users/register` | POST | ```json { "username": "nurdan", "password": "1234" } ``` | ```json {"id": 4,"username": "nurdan","password": "1234"}``` |
-| Get Information with Username | `http://localhost:8080/users/by-username?username=nurdan` | GET | - | ```json {"id": 4,"username": "nurdan","password": "1234","transactions": []} ``` |
-| Add Categories | `http://localhost:8080/categories` | POST | ```json {"name": "Food"} ``` | ```json {"id": 1,"name": "Food"} ``` |
-| Add Transaction | `http://localhost:8080/transactions/add` | POST | ```json {"type": "expense","amount": 150.75,"description": "Groceries shopping","date": "2025-05-30","user": {"id": 4},"category": {"id": 1}} ``` | ```json {"id": 5,"type": "expense","amount": 150.75,"description": "Groceries shopping","date": "2025-05-30","user": {"id": 4,"username": null,"password": null,"transactions": null},"category": {"id": 1,name": null}} ``` |
+| Add User | `http://localhost:8080/users/register` | POST | ``` { "username": "nurdan", "password": "1234" } ``` | ``` {"id": 4,"username": "nurdan","password": "1234"} ``` |
+| Get Information with Username | `http://localhost:8080/users/by-username?username=nurdan` | GET | - | ``` {"id": 4,"username": "nurdan","password": "1234","transactions": []} ``` |
+| Add Categories | `http://localhost:8080/categories` | POST | ``` {"name": "Food"} ``` | ``` {"id": 1,"name": "Food"} ``` |
+| Add Transaction | `http://localhost:8080/transactions/add` | POST | ``` {"type": "expense","amount": 150.75,"description": "Groceries shopping","date": "2025-05-30","user": {"id": 4},"category": {"id": 1}} ``` | ``` {"id": 5,"type": "expense","amount": 150.75,"description": "Groceries shopping","date": "2025-05-30","user": {"id": 4,"username": null,"password": null,"transactions": null},"category": {"id": 1,name": null}} ``` |
+| Add Income(e.g. salary) | `http://localhost:8080/categories` | POST | ``` {"name": "Salary"} ``` | ```{"id": 2,"name": "Salary"} ``` |
+| Matching Income(salary) to the Specific User(e.g. nurdan) | `http://localhost:8080/transactions/add` | POST | ``` {"type": "income", "amount": 3000.0, "description": "Monthly salary", "date": "2025-11-11", "user": { "id": 4 }, "category": { "id": 2 }} ``` | ```{"id": 6,"type": "income","amount": 3000.0,"description": "Monthly salary","date": "2025-11-11","user": {"id": 4,"username": null,"password": null,"transactions": null},"category": { "id": 2,"name": null}} ``` |
 
 
 ## 🧱 Database Schema
