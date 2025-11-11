@@ -50,9 +50,10 @@ This project is a **Java & Spring Boot** based financial management system that 
 
 | Operation | Endpoint | Method | JSON Request Body | JSON Response Body |
 |------------|-----------|--------|-------------------|--------------------|
-| Add User | `http://localhost:8080/users/register` | POST | ```json { "username": "nurdan", "password": "1234" } ``` | ```json { "status": "success", "message": "User registered" } ``` |
-| Get Information with username | `/transactions/monthly?month=5&userId=1` | GET | - | ```json { "userId": 1, "month": 5, "transactions": [] } ``` |
-| Add new transaction | `/transactions/add` | POST | ```json { "userId": 1, "amount": 100, "category": "Food" } ``` | ```json { "status": "success", "transactionId": 101 } ``` |
+| Add User | `http://localhost:8080/users/register` | POST | ```json { "username": "nurdan", "password": "1234" } ``` | ```json {"id": 4,"username": "nurdan","password": "1234"}``` |
+| Get Information with Username | `http://localhost:8080/users/by-username?username=nurdan` | GET | - | ```json {"id": 4,"username": "nurdan","password": "1234","transactions": []} ``` |
+| Add Categories | `http://localhost:8080/categories` | POST | ```json {"name": "Food"} ``` | ```json {"id": 1,"name": "Food"} ``` |
+| Add Transaction | `http://localhost:8080/transactions/add` | POST | ```json {"type": "expense","amount": 150.75,"description": "Groceries shopping","date": "2025-05-30","user": {"id": 4},"category": {"id": 1}} ``` | ```json {"id": 5,"type": "expense","amount": 150.75,"description": "Groceries shopping","date": "2025-05-30","user": {"id": 4,"username": null,"password": null,"transactions": null},"category": {"id": 1,name": null}} ``` |
 
 
 ## 🧱 Database Schema
