@@ -56,14 +56,22 @@ This project is a **Java & Spring Boot** based financial management system that 
 | Add Transaction | `http://localhost:8080/transactions/add` | POST | ``` {"type": "expense","amount": 150.75,"description": "Groceries shopping","date": "2025-05-30","user": {"id": 4},"category": {"id": 1}} ``` | ``` {"id": 5,"type": "expense","amount": 150.75,"description": "Groceries shopping","date": "2025-05-30","user": {"id": 4,"username": null,"password": null,"transactions": null},"category": {"id": 1,name": null}} ``` |
 | Add Income(e.g. salary) | `http://localhost:8080/categories` | POST | ``` {"name": "Salary"} ``` | ```{"id": 2,"name": "Salary"} ``` |
 | Matching Income(salary) to the Specific User(e.g. nurdan) | `http://localhost:8080/transactions/add` | POST | ``` {"type": "income", "amount": 3000.0, "description": "Monthly salary", "date": "2025-11-11", "user": { "id": 4 }, "category": { "id": 2 }} ``` | ```{"id": 6,"type": "income","amount": 3000.0,"description": "Monthly salary","date": "2025-11-11","user": {"id": 4,"username": null,"password": null,"transactions": null},"category": { "id": 2,"name": null}} ``` |
-
+| Get Income and Expense for User(by user id) | `http://localhost:8080/transactions/user/4` | GET | - | ``` [{"id": 5,"type": "expense","amount": 150.75,"description": "Groceries shopping","date": "2025-05-30"},{"id": 6,"type": "income","amount": 3000.0,"description": "Monthly salary","date": "2025-11-11"}]``` |
+| Get Montly Transaction | `//localhost:8080/transactions/monthly?userId=4&year=2025&month=05` | GET | - | ``` {"id": 5,"type": "expense","amount": 150.75,"description": "Groceries shopping","date": "2025-05-30"} ``` |
+| Get total income,expense and etc. for One Month | `http://localhost:8080/transactions/monthly/report/full?userId=4&year=2025&month=5` | GET | - | ``` {"totalIncome": 0.0,"totalExpense": 150.75,"highestSpendingCategory": "Food","totalSaving": -150.75} ``` |
 
 ## 🧱 Database Schema
 
 **Tables:**
-- **Users** (id, name, email, password)  
-- **Transactions** (id, user_id, category, amount, date, description)  
-- **Categories** (id, name, type)
+- **Users** (id, name, password)
+- <img width="392" height="210" alt="image" src="https://github.com/user-attachments/assets/d4af5aaa-16e4-4415-9fb8-503d71db1e8e" />
+
+- **Transactions** (amount, date, description, type, category_id, user_id)
+- <img width="765" height="271" alt="image" src="https://github.com/user-attachments/assets/c2cde8b3-fea3-4733-928b-ed8a4b6c2961" />
+  
+- **Categories** (id, name)
+- <img width="366" height="220" alt="image" src="https://github.com/user-attachments/assets/40dedd14-eee9-49ea-80e7-e6bbefabd4bf" />
+
 
 ---
 
@@ -74,6 +82,5 @@ This project is a **Java & Spring Boot** based financial management system that 
 git clone https://github.com/your-username/personal-budget-tracker.git
 
 # 2. Open the project in your IDE (IntelliJ, Eclipse)
-# 3. Configure the MySQL connection in application.yml
-# 4. Run the application
+# 3. Run the application
 mvn spring-boot:run
