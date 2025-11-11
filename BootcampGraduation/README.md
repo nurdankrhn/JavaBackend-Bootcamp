@@ -1,30 +1,30 @@
 
-# 💰 Micro Finance Tracking System (Personal Budget Tracker)
+# Micro Finance Tracking System (Personal Budget Tracker)
 
 This project is a **Java & Spring Boot** based financial management system that allows users to **track their income and expenses**, **categorize their spending**, and **generate monthly financial reports**.
 
 ---
 
-## 🚀 Features
+## Features
 
-### 👤 User Management
+### User Management
 - User registration and login
 - Each user has their own income and expense history
 
-### 💸 Income & Expense Management
+### Income & Expense Management
 - Add income (salary, freelance, etc.)
 - Add expense (bills, groceries, transportation, etc.)
 - CRUD operations (create, read, update, delete)
 - Each record includes: category, amount, description, and date
 
-### 📊 Monthly Reporting
+### Monthly Reporting
 - Total income, total expense, savings amount
 - Most spent category
 - Monthly financial summary (JSON or file output)
 
 ---
 
-## 🛠️ Technologies
+## Technologies
 
 | Layer | Technology |
 |--------|-------------|
@@ -36,7 +36,7 @@ This project is a **Java & Spring Boot** based financial management system that 
 
 ---
 
-## ⚙️ Architecture
+##  Architecture
 - Layered architecture: Controller → Service → Repository  
 - OOP principles (Encapsulation, Inheritance, Polymorphism)  
 - Exception Handling & Validation  
@@ -46,7 +46,7 @@ This project is a **Java & Spring Boot** based financial management system that 
 
 ---
 
-## 🧩 Example Endpoints
+## Example Endpoints
 
 | Operation | Endpoint | Method | JSON Request Body | JSON Response Body |
 |------------|-----------|--------|-------------------|--------------------|
@@ -60,7 +60,7 @@ This project is a **Java & Spring Boot** based financial management system that 
 | Get Montly Transaction | `//localhost:8080/transactions/monthly?userId=4&year=2025&month=05` | GET | - | ``` {"id": 5,"type": "expense","amount": 150.75,"description": "Groceries shopping","date": "2025-05-30"} ``` |
 | Get total income,expense and etc. for One Month | `http://localhost:8080/transactions/monthly/report/full?userId=4&year=2025&month=5` | GET | - | ``` {"totalIncome": 0.0,"totalExpense": 150.75,"highestSpendingCategory": "Food","totalSaving": -150.75} ``` |
 
-## 🧱 Database Schema
+##  Database Schema
 
 **Tables:**
 - **Users** (id, name, password)
@@ -75,7 +75,20 @@ This project is a **Java & Spring Boot** based financial management system that 
 
 ---
 
-## 🧪 Setup
+##  Screenshots
+
+<img width="1906" height="1031" alt="checkAppRun" src="https://github.com/user-attachments/assets/075a65a7-709d-444c-9db4-c5e6e89bd20a" />
+
+<img width="1913" height="1033" alt="getInfoWithUserName" src="https://github.com/user-attachments/assets/6e45c147-4055-481f-8c13-5074a1e4718f" />
+
+<img width="1920" height="1026" alt="getMonthlyTransaction" src="https://github.com/user-attachments/assets/b1760dd0-620f-4a18-8ec2-b20aa6674e2e" />
+
+<img width="1920" height="1028" alt="getTransactionByUserId" src="https://github.com/user-attachments/assets/32c6811e-4aa7-427a-a6b6-fdded7f100bc" />
+
+<img width="1920" height="1033" alt="getTotalExpenseIncome" src="https://github.com/user-attachments/assets/9834e773-c4dd-4e87-b677-93ebd30a8dd3" />
+
+
+##  Setup
 
 ```bash
 # 1. Clone the repository
