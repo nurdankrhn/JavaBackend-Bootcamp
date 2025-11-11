@@ -48,12 +48,12 @@ This project is a **Java & Spring Boot** based financial management system that 
 
 ## 🧩 Example Endpoints
 
-| Operation | Endpoint | Method | Json Request Body | | Json Response Body |
-|------------|-----------|--------|------------------------------|-----------------------------------|
-| Add  User | `http://localhost:8080/users/register` | POST | | `{"username": "nurdan","password": "1234"}` | | `-` |
+| Operation | Endpoint | Method | JSON Request Body | JSON Response Body |
+|------------|-----------|--------|-------------------|--------------------|
+| Add User | `http://localhost:8080/users/register` | POST | ```json { "username": "nurdan", "password": "1234" } ``` | ```json { "status": "success", "message": "User registered" } ``` |
+| Get Information with username | `/transactions/monthly?month=5&userId=1` | GET | - | ```json { "userId": 1, "month": 5, "transactions": [] } ``` |
+| Add new transaction | `/transactions/add` | POST | ```json { "userId": 1, "amount": 100, "category": "Food" } ``` | ```json { "status": "success", "transactionId": 101 } ``` |
 
-
----
 
 ## 🧱 Database Schema
 
